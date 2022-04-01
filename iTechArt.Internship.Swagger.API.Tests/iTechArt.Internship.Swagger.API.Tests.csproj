@@ -10,8 +10,8 @@
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
       <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
       <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-      <PackageReference Include="NUnit" Version="3.13.3" />
       <PackageReference Include="RestSharp" Version="106.12.0" />
+      <PackageReference Include="xunit" Version="2.4.1" />
     </ItemGroup>
 
     <ItemGroup>
@@ -19,6 +19,11 @@
       <Content Include="appsettings.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Models\RequestModels" />
+      <Folder Include="Models\ViewModels" />
     </ItemGroup>
 
 </Project>

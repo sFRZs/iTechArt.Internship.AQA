@@ -3,6 +3,6 @@
     public class TaskGroupMember
     {
         public int ExecutionOrder { get; set; }
-        public Task Task { get; set; }
+        public TaskVM TaskVm { get; set; }
     }
 }

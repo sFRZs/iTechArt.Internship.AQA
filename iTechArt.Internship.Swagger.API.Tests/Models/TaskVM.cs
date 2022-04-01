@@ -2,7 +2,7 @@
 
 namespace iTechArt.Internship.Swagger.API.Tests.Modules
 {
-    public class Task
+    public class TaskVM
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

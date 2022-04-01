@@ -7,30 +7,21 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services
 {
     public class DataTypesService
     {
-        private RestApiProvider _restApiProvider;
+        private readonly RestApiProvider _restApiProvider;
 
         public DataTypesService()
         {
             _restApiProvider = RestApiProvider.GetInstance();
         }
         
-        public async Task<IRestResponse> GetAllDataTypes()
+        public async Task<IRestResponse<T>> GetAllDataTypes<T>()
         {
             var client = _restApiProvider.GetRestClient();
             var request = _restApiProvider.CreateGetRequest(Configurator.DataTypesEndpoint);
-            var response = await _restApiProvider.GetResponse(client, request);
 
-           return response;
+           return await client.ExecuteAsync<T>(request);
         }
         
-        public async Task<IRestResponse> GetAllDataTypes<T>()
-        {
-            var client = _restApiProvider.GetRestClient();
-            var request = _restApiProvider.CreateGetRequest(Configurator.DataTypesEndpoint);
-            var response = await _restApiProvider.GetResponse<IList<T>>(client, request);
-
-            return response;
-        }
 
         // public async Task<IRestResponse> GetAsync<T>()
         // {

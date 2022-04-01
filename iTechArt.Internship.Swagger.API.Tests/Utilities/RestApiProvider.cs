@@ -18,29 +18,16 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
             return new RestClient(Configurator.BaseUrl);
         }
 
-        public IRestRequest CreateGetRequest(string endPoint)
+        public IRestRequest CreateGetRequest(string endPoint, object payload = null)
         {
             var request = new RestRequest(endPoint);
             request.AddHeader("Authorization", Configurator.Token);
+            if (payload != null )
+            {
+                request.AddParameter("payload", payload, ParameterType.RequestBody);  
+            }
+            
             return request;
-        }
-
-        public async Task<IRestResponse> GetResponse(IRestClient client, IRestRequest request)
-        {
-            return await client.ExecuteAsync(request);
-        }
-
-        public async Task<IRestResponse<T>> GetResponse(IRestClient client, IRestRequest request)
-        {
-            return await client.ExecuteAsync<T>(request);
-        }
-
-        public IList<T> GetContent<T>(Task<IRestResponse> response)
-        {
-            var  tmp = JsonSerializer.Deserialize<T>(response.Result.Content);
-            
-            
-            return ;
         }
 
         public static RestApiProvider GetInstance()
