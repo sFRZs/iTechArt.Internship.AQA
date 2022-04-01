@@ -23,7 +23,6 @@
 
     <ItemGroup>
       <Folder Include="Models\RequestModels" />
-      <Folder Include="Models\ViewModels" />
     </ItemGroup>
 
 </Project>

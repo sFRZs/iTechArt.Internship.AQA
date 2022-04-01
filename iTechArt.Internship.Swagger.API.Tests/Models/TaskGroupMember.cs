@@ -1,4 +1,6 @@
-﻿namespace iTechArt.Internship.Swagger.API.Tests.Modules
+﻿using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels;
+
+namespace iTechArt.Internship.Swagger.API.Tests.Modules
 {
     public class TaskGroupMember
     {

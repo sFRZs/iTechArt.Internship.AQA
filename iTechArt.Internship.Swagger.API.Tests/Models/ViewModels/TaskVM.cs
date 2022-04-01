@@ -1,6 +1,10 @@
-﻿using System;
+﻿#region
 
-namespace iTechArt.Internship.Swagger.API.Tests.Modules
+using System;
+
+#endregion
+
+namespace iTechArt.Internship.Swagger.API.Tests.Models.ViewModels
 {
     public class TaskVM
     {
