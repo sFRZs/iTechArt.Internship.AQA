@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text.Json;
-using System.Threading.Tasks;
-using RestSharp;
+﻿using RestSharp;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Utilities
 {
@@ -22,11 +19,11 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
         {
             var request = new RestRequest(endPoint);
             request.AddHeader("Authorization", Configurator.Token);
-            if (payload != null )
+            if (payload != null)
             {
-                request.AddParameter("payload", payload, ParameterType.RequestBody);  
+                request.AddParameter("payload", payload, ParameterType.RequestBody);
             }
-            
+
             return request;
         }
 

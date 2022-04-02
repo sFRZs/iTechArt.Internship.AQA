@@ -1,39 +1,39 @@
-﻿// using iTechArt.Internship.Swagger.API.Tests.Modules;
-// using iTechArt.Internship.Swagger.API.Tests.Services;
-// using iTechArt.Internship.Swagger.API.Tests.Utilities;
-// using NUnit.Framework;
-//
-// namespace iTechArt.Internship.Swagger.API.Tests.Tests
-// {
-//     public class TaskTests
-//     {
-//         private TasksService _tasksService;
-//
-//         [SetUp]
-//         public void SetUp()
-//         {
-//             _tasksService = new TasksService();
-//         }
-//
-//         [Test]
-//         public void StatusCodeOfGetAllActiveTasksIs200()
-//         {
-//             var response = _tasksService.GetAllActiveTasks<ActiveTask>();
-//             Assert.AreEqual(200, (int) response.Result.StatusCode);
-//         }
-//
-//         [Test]
-//         public void StatusCodeOfGetAllActiveTasksGroupIs200()
-//         {
-//             var response = _tasksService.GetAllActiveTasksGroup<ActiveTasksGroup>();
-//             Assert.AreEqual(200, (int) response.Result.StatusCode);
-//         }
-//
-//         [Test]
-//         public void StatusCodeOfGetAllActiveIndividualIs200()
-//         {
-//             var response = _tasksService.GetAllActiveIndividual<ActiveIndividual>();
-//             Assert.AreEqual(200, (int) response.Result.StatusCode);
-//         }
-//     }
-// }
+﻿using System.Threading.Tasks;
+using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels;
+using iTechArt.Internship.Swagger.API.Tests.Services;
+using Xunit;
+
+
+namespace iTechArt.Internship.Swagger.API.Tests.Tests
+{
+    public class TaskTests
+    {
+        private TasksService _tasksService;
+
+        public TaskTests()
+        {
+            _tasksService = new TasksService();
+        }
+
+        [Fact]
+        public async Task StatusCodeOfGetAllActiveTasksIs200()
+        {
+            var response = await _tasksService.GetAllActiveTasks<ActiveTaskVM>();
+            Assert.Equal(200, (int) response.StatusCode);
+        }
+
+        [Fact]
+        public async Task StatusCodeOfGetAllActiveTasksGroupIs200()
+        {
+            var response = await _tasksService.GetAllActiveTasksGroup<ActiveTasksGroupVM>();
+            Assert.Equal(200, (int) response.StatusCode);
+        }
+
+        [Fact]
+        public async Task StatusCodeOfGetAllActiveIndividualIs200()
+        {
+            var response = await _tasksService.GetAllActiveIndividual<ActiveIndividualVM>();
+            Assert.Equal(200, (int) response.StatusCode);
+        }
+    }
+}

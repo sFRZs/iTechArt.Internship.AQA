@@ -1,8 +1,4 @@
-﻿#region
-
-using System;
-
-#endregion
+﻿using System;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Models.ViewModels
 {

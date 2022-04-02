@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace iTechArt.Internship.Swagger.API.Tests.Modules
+namespace iTechArt.Internship.Swagger.API.Tests.Models.ViewModels
 {
-    public class ActiveIndividual
+    public class ActiveIndividualVM
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="FluentAssertions" Version="6.5.1" />
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
       <PackageReference Include="Microsoft.Extensions.Configuration.FileProviderExtensions" Version="1.0.0-rc1-final" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
@@ -22,7 +23,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Models\RequestModels" />
+      <Compile Remove="Utilities\Responses\ActiveIndividualResponse.cs" />
+      <Compile Remove="Utilities\Responses\ActiveTaskResponse.cs" />
+      <Compile Remove="Utilities\Responses\ActiveTasksGroupResponse.cs" />
     </ItemGroup>
 
 </Project>

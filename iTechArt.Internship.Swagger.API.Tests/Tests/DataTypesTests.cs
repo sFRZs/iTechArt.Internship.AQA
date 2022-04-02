@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using FluentAssertions;
 using iTechArt.Internship.Swagger.API.Tests.Entities;
-using iTechArt.Internship.Swagger.API.Tests.Modules;
+using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels;
 using iTechArt.Internship.Swagger.API.Tests.Services;
 using Xunit;
 
@@ -20,11 +21,18 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
         [Fact]
         public async Task StatusCodeOfGetAllDataTypesIs200()
         {
-            var expectedDataTypes = DataTypeFactory.AllDataTypes();
-            var response = await _dataTypesService.GetAllDataTypes<IList<DataType>>();
-            IList<DataType> allDataTypes = response.Data;
-            
+            var response = await _dataTypesService.GetAllDataTypes<IList<DataTypeVM>>();
             Assert.Equal(200, (int) response.StatusCode);
+        }
+
+        [Fact]
+        public async Task ResponseDataTypesIsValid()
+        {
+            var expected = DataTypeFactory.AllDataTypes();
+            var response = await _dataTypesService.GetAllDataTypes<IList<DataTypeVM>>();
+            var actual = response.Data;
+            
+            actual.Should().BeEquivalentTo(expected, options=>options.Including(x=>x.Name));
         }
     }
 }
