@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
 
-namespace iTechArt.Internship.Swagger.API.Tests.Services
+namespace iTechArt.Internship.Swagger.API.Tests.Utilities
 {
     public static class Configurator
     {
@@ -12,6 +12,11 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services
 
         public static string BaseUrl => Configuration[nameof(BaseUrl)];
         public static string Token => Configuration[nameof(Token)];
+        public static string DataTypesEndpoint => Configuration[nameof(DataTypesEndpoint)];
+        public static string AllActiveTasksEndpoint => Configuration[nameof(AllActiveTasksEndpoint)];
+        public static string AllActiveTasksGroupEndpoint => Configuration[nameof(AllActiveTasksGroupEndpoint)];
+        public static string AllActiveIndividualEndpoint => Configuration[nameof(AllActiveIndividualEndpoint)];
+        
 
         static  Configurator()
         {
