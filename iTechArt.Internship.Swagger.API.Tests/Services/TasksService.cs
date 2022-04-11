@@ -37,7 +37,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services
             return await client.ExecuteAsync(request);
         }
 
-        public async Task<IRestResponse> GetAllActiveTasksGroup<T>()
+        public async Task<IRestResponse<T>> GetAllActiveTasksGroup<T>()
         {
             var client = _restApiProvider.GetRestClient();
             var request = _restApiProvider.CreateGetRequest(Configurator.AllActiveTasksGroupEndpoint);
@@ -53,7 +53,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services
             return await client.ExecuteAsync(request);
         }
 
-        public async Task<IRestResponse> GetAllActiveIndividual<T>()
+        public async Task<IRestResponse<T>> GetAllActiveIndividual<T>()
         {
             var client = _restApiProvider.GetRestClient();
             var request = _restApiProvider.CreateGetRequest(Configurator.AllActiveIndividualEndpoint);
