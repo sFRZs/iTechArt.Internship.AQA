@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using iTechArt.Internship.Swagger.API.Tests.Entities.Enums;
 using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels;
 
@@ -10,12 +11,12 @@ namespace iTechArt.Internship.Swagger.API.Tests.Entities
         public static IList<DataTypeVM> AllDataTypes()
         {
             var dataTypeList = new List<DataTypeVM>();
-   
+
             for (int i = 0; i < Enum.GetNames(typeof(DataTypes)).Length; i++)
             {
                 string type = null;
-                DataTypes eType =  (DataTypes)Enum.GetValues(typeof(DataTypes)).GetValue(i) ;
-                
+                DataTypes eType = (DataTypes) Enum.GetValues(typeof(DataTypes)).GetValue(i);
+
                 switch (eType)
                 {
                     case (DataTypes.Boolean):
@@ -42,15 +43,17 @@ namespace iTechArt.Internship.Swagger.API.Tests.Entities
                     case (DataTypes.String):
                         type = "System.String";
                         break;
+                    default:
+                        throw new InvalidEnumArgumentException();
                 }
 
-                dataTypeList.Add(new DataTypeVM()
+                dataTypeList.Add(new DataTypeVM
                 {
                     Id = Guid.Empty,
                     Name = type
                 });
             }
-            
+
             return dataTypeList;
         }
     }

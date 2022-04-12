@@ -7,10 +7,9 @@
     <ItemGroup>
       <PackageReference Include="FluentAssertions" Version="6.5.1" />
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.FileProviderExtensions" Version="1.0.0-rc1-final" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
       <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
-      <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+      <PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.15-beta1" />
       <PackageReference Include="RestSharp" Version="106.12.0" />
       <PackageReference Include="xunit" Version="2.4.1" />
     </ItemGroup>
@@ -18,6 +17,22 @@
     <ItemGroup>
       <None Remove="appsettings.json" />
       <Content Include="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="TestData\Schemas\IListDataTypeSchema.json" />
+      <Content Include="TestData\Schemas\IListDataTypeSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="TestData\Schemas\IListActiveTasksGroupSchema.json" />
+      <Content Include="TestData\Schemas\IListActiveTasksGroupSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="TestData\Schemas\IListActiveIndividualSchema.json" />
+      <Content Include="TestData\Schemas\IListActiveIndividualSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="TestData\Schemas\IListActiveTasksSchema.json" />
+      <Content Include="TestData\Schemas\IListActiveTasksSchema.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>
