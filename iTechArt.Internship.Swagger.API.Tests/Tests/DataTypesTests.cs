@@ -25,11 +25,11 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
         public async Task StatusCodeOfGetAllDataTypesIs200()
         {
             var response = await _dataTypesService.GetAllDataTypes<IList<DataTypeVM>>();
-            var isValidSchema = JsonValidator.IsValid(response.Content, "IListDataTypeSchema.json");
+            var isValidSchema = JsonValidator.IsValid(response.Content, "IListDataTypeSchema.json", out var errors);
 
             using (new AssertionScope())
             {
-                isValidSchema.Should().BeTrue();
+                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
                 response.StatusCode.Should().Be(HttpStatusCode.OK);
             }
         }
@@ -40,11 +40,11 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
             var expected = DataTypeFactory.AllDataTypes();
             var response = await _dataTypesService.GetAllDataTypes<IList<DataTypeVM>>();
             var actual = response.Data;
-            var isValidSchema = JsonValidator.IsValid(response.Content, "IListDataTypeSchema.json");
+            var isValidSchema = JsonValidator.IsValid(response.Content, "IListDataTypeSchema.json", out var errors);
 
             using (new AssertionScope())
             {
-                isValidSchema.Should().BeTrue();
+                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
                 actual.Should().BeEquivalentTo(expected, options => options.Including(x => x.Name));
             }
         }

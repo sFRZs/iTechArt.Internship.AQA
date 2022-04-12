@@ -12,7 +12,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
 {
     public class TaskTests
     {
-        private TasksService _tasksService;
+        private readonly TasksService _tasksService;
 
         public TaskTests()
         {
@@ -23,11 +23,11 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
         public async Task StatusCodeOfGetAllActiveTasksIs200()
         {
             var response = await _tasksService.GetAllActiveTasks<IList<ActiveTaskVM>>();
-            var isValidSchema = JsonValidator.IsValid(response.Content, "IListActiveTasksSchema.json");
+            var isValidSchema = JsonValidator.IsValid(response.Content, "IListActiveTasksSchema.json", out var errors);
 
             using (new AssertionScope())
             {
-                isValidSchema.Should().BeTrue();
+                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
                 response.StatusCode.Should().Be(HttpStatusCode.OK);
             }
         }
@@ -36,11 +36,12 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
         public async Task StatusCodeOfGetAllActiveTasksGroupIs200()
         {
             var response = await _tasksService.GetAllActiveTasksGroup<IList<ActiveTasksGroupVM>>();
-            var isValidSchema = JsonValidator.IsValid(response.Content, "IListActiveTasksGroupSchema.json");
+            var isValidSchema =
+                JsonValidator.IsValid(response.Content, "IListActiveTasksGroupSchema.json", out var errors);
 
             using (new AssertionScope())
             {
-                isValidSchema.Should().BeTrue();
+                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
                 response.StatusCode.Should().Be(HttpStatusCode.OK);
             }
         }
@@ -49,11 +50,12 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
         public async Task StatusCodeOfGetAllActiveIndividualIs200()
         {
             var response = await _tasksService.GetAllActiveIndividual<IList<ActiveIndividualVM>>();
-            var isValidSchema = JsonValidator.IsValid(response.Content, "IListActiveIndividualSchema.json");
+            var isValidSchema =
+                JsonValidator.IsValid(response.Content, "IListActiveIndividualSchema.json", out var errors);
 
             using (new AssertionScope())
             {
-                isValidSchema.Should().BeTrue();
+                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
                 response.StatusCode.Should().Be(HttpStatusCode.OK);
             }
         }

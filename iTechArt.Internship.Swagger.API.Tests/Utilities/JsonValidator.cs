@@ -10,9 +10,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
 {
     public static class JsonValidator
     {
-        public static IList<string> Messages;
-
-        public static bool IsValid(string responseContent, string fileName)
+        public static bool IsValid(string responseContent, string fileName, out IList<string> errorMessages)
         {
             var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var path =
@@ -24,7 +22,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
             {
                 var schema = JSchema.Load(new JsonTextReader(reader));
                
-                return jObject.IsValid(schema, out Messages);
+                return jObject.IsValid(schema, out errorMessages);
             }
         }
     }
