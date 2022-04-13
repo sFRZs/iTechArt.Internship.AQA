@@ -1,0 +1,21 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "TaskGroupMember": {
+    "properties": {
+      "executionOrder": {
+        "type": "integer"
+      },
+      "task": {
+        "$ref": "TaskSchema.json"
+      }
+    },
+    "required": [
+      "executionOrder",
+      "task"
+    ],
+    "additionalItems": false,
+    "additionalProperties": false,
+    "title": "TaskGroupMember"
+  }
+}

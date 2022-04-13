@@ -20,8 +20,12 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
 
             using (TextReader reader = File.OpenText(path))
             {
-                var schema = JSchema.Load(new JsonTextReader(reader));
-               
+                var schema = JSchema.Load(new JsonTextReader(reader), new JSchemaReaderSettings
+                {
+                    Resolver = new JSchemaUrlResolver(),
+                    BaseUri = new Uri(path)
+                });
+
                 return jObject.IsValid(schema, out errorMessages);
             }
         }

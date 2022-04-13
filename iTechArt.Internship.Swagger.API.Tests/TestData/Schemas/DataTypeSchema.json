@@ -1,0 +1,23 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "DataType": {
+    "properties": {
+      "id": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "id",
+      "name"
+    ],
+    "additionalItems": false,
+    "additionalProperties": false,
+    "title": "DataType"
+  }
+}

@@ -1,50 +1,10 @@
 ﻿{
+  "description": "This schema for response of GetAllActiveIndividualTasks",
   "$schema": "http://json-schema.org/draft-06/schema#",
   "type": "array",
   "items": [
     {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "name": {
-          "type": "string"
-        },
-        "sourceSystemId": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "targetSystemId": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "isActive": {
-          "type": "boolean"
-        },
-        "lastExecutionDate": {
-          "anyOf": [
-            {
-              "type": "string",
-              "format": "date-time"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "sourceSystemId",
-        "targetSystemId",
-        "isActive",
-        "lastExecutionDate"
-      ],
-      "additionalItems": false,
-      "additionalProperties": false
+      "$ref": "TaskSchema.json"
     }
   ]
 }
