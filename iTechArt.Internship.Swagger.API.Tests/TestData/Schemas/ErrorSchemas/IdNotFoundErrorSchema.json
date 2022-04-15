@@ -1,0 +1,17 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "IdNotFoundError": {
+    "properties": {
+      "error": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "error"
+  ],
+  "additionalItems": false,
+  "additionalProperties": false,
+  "title": "IdNotFoundError"
+}

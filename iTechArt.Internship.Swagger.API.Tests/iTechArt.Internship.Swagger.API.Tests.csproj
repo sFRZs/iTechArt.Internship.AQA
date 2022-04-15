@@ -51,6 +51,18 @@
       <Content Include="TestData\Schemas\TasksGroupSchema.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="TestData\Schemas\ErrorSchemas\ErrorsSchema.json" />
+      <Content Include="TestData\Schemas\ErrorSchemas\ErrorsSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="TestData\Schemas\ErrorSchemas\UnauthorizedErrorSchema.json" />
+      <Content Include="TestData\Schemas\ErrorSchemas\UnauthorizedErrorSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="TestData\Schemas\ErrorSchemas\IdNotFoundErrorSchema.json" />
+      <Content Include="TestData\Schemas\ErrorSchemas\IdNotFoundErrorSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>

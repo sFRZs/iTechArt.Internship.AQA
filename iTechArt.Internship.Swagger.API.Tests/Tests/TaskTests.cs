@@ -25,11 +25,13 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
         }
 
         [Fact]
-        public async Task StatusCodeOfGetAllActiveTasksIs200()
+        public async Task StatusCode_Of_GetAllActiveTasks_Is_200()
         {
+            // act
             var response = await _tasksService.GetAllActiveTasks<IList<ActiveTaskVM>>();
             var isValidSchema = JsonValidator.IsValid(response.Content, "IListActiveTasksSchema.json", out var errors);
 
+            // assert
             using (new AssertionScope())
             {
                 isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
@@ -38,12 +40,13 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
         }
 
         [Fact]
-        public async Task StatusCodeOfGetAllActiveTasksGroupIs200()
+        public async Task StatusCode_Of_GetAllActiveTasksGroup_Is_200()
         {
+            // act
             var response = await _tasksService.GetAllActiveTasksGroup<IList<ActiveTasksGroupVM>>();
-            var isValidSchema =
-                JsonValidator.IsValid(response.Content, "IListActiveTasksGroupSchema.json", out var errors);
+            var isValidSchema = JsonValidator.IsValid(response.Content, "IListActiveTasksGroupSchema.json", out var errors);
 
+            // assert
             using (new AssertionScope())
             {
                 isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
@@ -52,12 +55,13 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
         }
 
         [Fact]
-        public async Task StatusCodeOfGetAllActiveIndividualIs200()
+        public async Task StatusCode_Of_GetAllActiveIndividual_Is_200()
         {
+            // act
             var response = await _tasksService.GetAllActiveIndividual<IList<ActiveIndividualVM>>();
-            var isValidSchema =
-                JsonValidator.IsValid(response.Content, "IListActiveIndividualSchema.json", out var errors);
+            var isValidSchema = JsonValidator.IsValid(response.Content, "IListActiveIndividualSchema.json", out var errors);
 
+            // assert
             using (new AssertionScope())
             {
                 isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");

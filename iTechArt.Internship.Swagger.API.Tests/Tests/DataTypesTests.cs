@@ -16,7 +16,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
     {
         private readonly DataTypesService _dataTypesService;
 
-
         public DataTypesTests()
         {
             _dataTypesService = new DataTypesService
@@ -26,11 +25,13 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
         }
 
         [Fact]
-        public async Task StatusCodeOfGetAllDataTypesIs200()
+        public async Task StatusCode_Of_GetAllDataTypes_Is_200()
         {
+            // act
             var response = await _dataTypesService.GetAllDataTypes<IList<DataTypeVM>>();
             var isValidSchema = JsonValidator.IsValid(response.Content, "IListDataTypeSchema.json", out var errors);
 
+            // assert
             using (new AssertionScope())
             {
                 isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
@@ -39,13 +40,17 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
         }
 
         [Fact]
-        public async Task ResponseDataTypesIsValid()
+        public async Task Response_DataTypes_Is_Valid()
         {
+            // arrange
             var expected = DataTypeFactory.AllDataTypes();
             var response = await _dataTypesService.GetAllDataTypes<IList<DataTypeVM>>();
+
+            // act
             var actual = response.Data;
             var isValidSchema = JsonValidator.IsValid(response.Content, "IListDataTypeSchema.json", out var errors);
 
+            // assert
             using (new AssertionScope())
             {
                 isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");

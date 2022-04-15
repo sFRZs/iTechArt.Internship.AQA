@@ -26,18 +26,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
 
             return request;
         }
-        // } public IRestRequest CreateRequest(string endPoint, Method method = Method.GET, string token = null)
-        // {
-        //     var request = new RestRequest(endPoint, method);
-        //     // request.AddHeader("Authorization", Configurator.Token);
-        //     // if (payload != null)
-        //     // {
-        //     //     request.AddParameter("payload", payload, ParameterType.RequestBody);
-        //     // }
-        //
-        //     return request;
-        // }
-
+      
         public static RestApiProvider GetInstance()
         {
             if (_provider == null)
