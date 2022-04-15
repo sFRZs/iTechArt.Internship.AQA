@@ -3,9 +3,10 @@ using System.Net;
 using System.Threading.Tasks;
 using FluentAssertions;
 using FluentAssertions.Execution;
-using iTechArt.Internship.Swagger.API.Tests.Entities;
+using iTechArt.Internship.Swagger.API.Tests.Entities.Enums;
+using iTechArt.Internship.Swagger.API.Tests.Entities.Factories;
 using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels;
-using iTechArt.Internship.Swagger.API.Tests.Services;
+using iTechArt.Internship.Swagger.API.Tests.Services.Classes;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
 using Xunit;
 
@@ -18,7 +19,10 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
 
         public DataTypesTests()
         {
-            _dataTypesService = new DataTypesService();
+            _dataTypesService = new DataTypesService
+            {
+                AuthToken = AuthTokenFactory.GetToken(AuthTokenPlace.ConfigurationFile)
+            };
         }
 
         [Fact]
