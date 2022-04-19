@@ -8,6 +8,7 @@ using iTechArt.Internship.Swagger.API.Tests.Entities.Factories;
 using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels;
 using iTechArt.Internship.Swagger.API.Tests.Services.Classes;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
+using Microsoft.Extensions.Logging;
 using Xunit;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Tests
@@ -15,6 +16,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
     public class TaskTests
     {
         private readonly TasksService _tasksService;
+        private MyLogger<TaskTests> _logger;
 
         public TaskTests()
         {
@@ -22,6 +24,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
             {
                 AuthToken = AuthTokenFactory.GetToken(AuthTokenPlace.ConfigurationFile)
             };
+            _logger = new MyLogger<TaskTests>();
         }
 
         [Fact]
@@ -30,7 +33,8 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
             // act
             var response = await _tasksService.GetAllActiveTasks<IList<ActiveTaskVM>>();
             var isValidSchema = JsonValidator.IsValid(response.Content, "IListActiveTasksSchema.json", out var errors);
-
+            _logger.TraceResponse(response);
+            
             // assert
             using (new AssertionScope())
             {
@@ -44,7 +48,8 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
         {
             // act
             var response = await _tasksService.GetAllActiveTasksGroup<IList<ActiveTasksGroupVM>>();
-            var isValidSchema = JsonValidator.IsValid(response.Content, "IListActiveTasksGroupSchema.json", out var errors);
+            var isValidSchema =
+                JsonValidator.IsValid(response.Content, "IListActiveTasksGroupSchema.json", out var errors);
 
             // assert
             using (new AssertionScope())
@@ -59,7 +64,8 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
         {
             // act
             var response = await _tasksService.GetAllActiveIndividual<IList<ActiveIndividualVM>>();
-            var isValidSchema = JsonValidator.IsValid(response.Content, "IListActiveIndividualSchema.json", out var errors);
+            var isValidSchema =
+                JsonValidator.IsValid(response.Content, "IListActiveIndividualSchema.json", out var errors);
 
             // assert
             using (new AssertionScope())
