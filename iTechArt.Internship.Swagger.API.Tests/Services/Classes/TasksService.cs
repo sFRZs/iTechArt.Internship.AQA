@@ -54,6 +54,14 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes
 
             return await client.ExecuteAsync<T>(request);
         }
+        
+        public async Task<IRestResponse> GetTaskById(string taskId)
+        {
+            var client = RestApiProvider.GetRestClient();
+            var request = RestApiProvider.CreateRequest($"{Configurator.TaskByIdEndpoint}{taskId}", AuthToken);
+
+            return await client.ExecuteAsync(request);
+        }
 
         public async Task<IRestResponse<T>> GetTaskById<T>(string taskId)
         {
@@ -62,5 +70,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes
 
             return await client.ExecuteAsync<T>(request);
         }
+        
     }
 }

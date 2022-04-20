@@ -1,9 +1,10 @@
-﻿using iTechArt.Internship.Swagger.API.Tests.Entities.Enums;
+﻿using System.ComponentModel;
+using iTechArt.Internship.Swagger.API.Tests.Entities.Enums;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Entities.Factories
 {
-    public class AuthTokenFactory
+    public static class AuthTokenFactory
     {
         private static string _token = Configurator.Token;
 
@@ -20,14 +21,10 @@ namespace iTechArt.Internship.Swagger.API.Tests.Entities.Factories
                 case (AuthTokenPlace.Null):
                     _token = null;
                     break;
+                default:
+                    throw new InvalidEnumArgumentException("This option not defined in enum.");
             }
-            // }
-            // if (_token == null)
-            // {
-            //     //some logic
-            // }
-            //
-            // return _token;
+
             return _token;
         }
     }

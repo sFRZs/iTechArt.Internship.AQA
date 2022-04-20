@@ -28,14 +28,14 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
             _tasksService.AuthToken = AuthTokenFactory.GetToken(AuthTokenPlace.Null);
 
             // act
-            var response = await _tasksService.GetAllActiveIndividual();
-            var isValidSchema = JsonValidator.IsValid(response.Content, "UnauthorizedErrorSchema.json", out var errors);
-
+            var response = await _tasksService.GetAllActiveIndividual<ErrorModelVM>();
+            var errorMessage = response.Data.Errors.AuthorizationHeader[0];
+      
             // assert
             using (new AssertionScope())
             {
                 response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
-                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
+                errorMessage.Should().Be("No Authorization data has been provided");
             }
         }
 
@@ -46,8 +46,8 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
             _tasksService.AuthToken = AuthTokenFactory.GetToken(AuthTokenPlace.ConfigurationFile);
 
             // act
-            var response = await _tasksService.GetTaskById<TaskVM>($"{Guid.Empty}");
-            var isValidSchema = JsonValidator.IsValid(response.Content, "IdNotFoundErrorSchema.json", out var errors);
+            var response = await _tasksService.GetTaskById($"{Guid.Empty}");
+            var isValidSchema = JsonValidator.IsValid(response.Content, "CustomErrorSchema.json", out var errors);
 
             // assert
             using (new AssertionScope())
