@@ -16,6 +16,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
         public static string AllActiveTasksEndpoint => Configuration[nameof(AllActiveTasksEndpoint)];
         public static string AllActiveTasksGroupEndpoint => Configuration[nameof(AllActiveTasksGroupEndpoint)];
         public static string AllActiveIndividualEndpoint => Configuration[nameof(AllActiveIndividualEndpoint)];
+        public static string TaskByIdEndpoint => Configuration[nameof(TaskByIdEndpoint)];
         
 
         static  Configurator()

@@ -1,27 +1,11 @@
 ﻿{
-  "description": "",
+  "description": "This schema for response of GetAllDataType",
   "$schema": "http://json-schema.org/draft-06/schema#",
   "type": "array",
   "items": 
     [
       {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 1
-          }
-        },
-        "required": [
-          "id",
-          "name"
-        ],
-        "additionalItems": false,
-        "additionalProperties": false
+        "$ref": "DataTypeSchema.json"
       }
     ]
 }

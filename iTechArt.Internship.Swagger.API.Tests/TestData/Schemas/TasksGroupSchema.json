@@ -1,0 +1,45 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "TasksGroup": {
+    "properties": {
+      "id": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "name": {
+        "type": "string"
+      },
+      "lastTriggeredTime": {
+        "anyOf": [
+          {
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "isActive": {
+        "type": "boolean"
+      },
+      "taskGroupMembers": {
+        "type": "array",
+        "items": {
+          "$ref": "TaskGroupMemberSchema.json"
+        }
+      }
+    },
+    "required": [
+      "id",
+      "isActive",
+      "lastTriggeredTime",
+      "name",
+      "taskGroupMembers"
+    ],
+    "additionalItems": false,
+    "additionalProperties": false,
+    "title": "TasksGroup"
+  }
+}

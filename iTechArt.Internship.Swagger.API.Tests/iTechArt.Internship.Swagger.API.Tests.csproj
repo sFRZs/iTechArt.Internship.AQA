@@ -35,6 +35,29 @@
       <Content Include="TestData\Schemas\IListActiveTasksSchema.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="TestData\Schemas\TaskSchema.json" />
+      <Content Include="TestData\Schemas\TaskSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="TestData\Schemas\TaskGroupMemberSchema.json" />
+      <Content Include="TestData\Schemas\TaskGroupMemberSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="TestData\Schemas\DataTypeSchema.json" />
+      <Content Include="TestData\Schemas\DataTypeSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="TestData\Schemas\TasksGroupSchema.json" />
+      <Content Include="TestData\Schemas\TasksGroupSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="TestData\Schemas\ErrorSchemas\ErrorsSchema.json" />
+      <None Remove="TestData\Schemas\ErrorSchemas\UnauthorizedErrorSchema.json" />
+      <None Remove="TestData\Schemas\ErrorSchemas\IdNotFoundErrorSchema.json" />
+      <None Remove="TestData\Schemas\ErrorSchemas\CustomErrorSchema.json" />
+      <Content Include="TestData\Schemas\ErrorSchemas\CustomErrorSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>

@@ -4,7 +4,7 @@ using System.ComponentModel;
 using iTechArt.Internship.Swagger.API.Tests.Entities.Enums;
 using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels;
 
-namespace iTechArt.Internship.Swagger.API.Tests.Entities
+namespace iTechArt.Internship.Swagger.API.Tests.Entities.Factories
 {
     public class DataTypeFactory
     {

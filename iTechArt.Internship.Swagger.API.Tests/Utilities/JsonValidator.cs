@@ -10,21 +10,26 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
 {
     public static class JsonValidator
     {
-        public static IList<string> Messages;
-
-        public static bool IsValid(string responseContent, string fileName)
+        public static bool IsValid(string responseContent, string fileName, out IList<string> errorMessages)
         {
             var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var path =
-                $"{basePath}{Path.DirectorySeparatorChar}TestData{Path.DirectorySeparatorChar}Schemas{Path.DirectorySeparatorChar}{fileName}";
+                $"{basePath}{Path.DirectorySeparatorChar}TestData{Path.DirectorySeparatorChar}Schemas{Path.DirectorySeparatorChar}";
+            path += fileName.Contains("Error") ? $"ErrorSchemas{Path.DirectorySeparatorChar}{fileName}" : $"{fileName}";
+            
+          
 
             var jObject = JToken.Parse(responseContent);
 
             using (TextReader reader = File.OpenText(path))
             {
-                var schema = JSchema.Load(new JsonTextReader(reader));
-               
-                return jObject.IsValid(schema, out Messages);
+                var schema = JSchema.Load(new JsonTextReader(reader), new JSchemaReaderSettings
+                {
+                    Resolver = new JSchemaUrlResolver(),
+                    BaseUri = new Uri(path)
+                });
+
+                return jObject.IsValid(schema, out errorMessages);
             }
         }
     }
