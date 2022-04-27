@@ -11,6 +11,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes
         {
             var client = RestApiProvider.GetRestClient();
             var request = RestApiProvider.CreateRequest(Configurator.DataTypesEndpoint, AuthToken);
+            _logHelper.TraceRequest(request);
 
             return await client.ExecuteAsync(request);
         }
@@ -19,6 +20,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes
         {
             var client = RestApiProvider.GetRestClient();
             var request = RestApiProvider.CreateRequest(Configurator.DataTypesEndpoint, AuthToken);
+            _logHelper.TraceRequest(request);
 
             return await client.ExecuteAsync<T>(request);
         }
