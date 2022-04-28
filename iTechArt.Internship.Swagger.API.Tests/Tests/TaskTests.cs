@@ -39,8 +39,8 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
             // assert
             using (new AssertionScope())
             {
-                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
                 response.StatusCode.Should().Be(HttpStatusCode.OK);
+                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
             }
         }
 
@@ -55,8 +55,8 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
             // assert
             using (new AssertionScope())
             {
-                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
-                response.StatusCode.Should().Be(HttpStatusCode.OK);
+              response.StatusCode.Should().Be(HttpStatusCode.OK);
+              isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
             }
         }
 
@@ -71,8 +71,8 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
             // assert
             using (new AssertionScope())
             {
-                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
                 response.StatusCode.Should().Be(HttpStatusCode.OK);
+                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
             }
         }
     }

@@ -17,10 +17,10 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
 
         public void TraceRequest(IRestRequest request)
         {
-            _log.LogInformation($"URL         : {request.Resource}");
-            _log.LogInformation($"Method      : {request.Method}");
-            _log.LogInformation($"Headers     : {request.Parameters}");
-            _log.LogInformation($"Request body: {request.Body}");
+            _log.LogDebug($"URL         : {request.Resource}");
+            _log.LogDebug($"Method      : {request.Method}");
+            _log.LogDebug($"Headers     : {request.Parameters}");
+            _log.LogDebug($"Request body: {request.Body}");
         }
 
         public void TraceResponse(IRestResponse response)
@@ -29,7 +29,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
             _log.LogInformation($"Status text  : {response.StatusDescription}");
             _log.LogInformation($"Headers      : {response.Headers}");
             _log.LogInformation($"Response body: {response.Content}");
-
+            
             if (response.ErrorMessage != null)
             {
                 _log.LogError($"Errors: {response.ErrorMessage}");

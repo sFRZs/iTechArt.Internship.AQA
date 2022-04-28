@@ -39,8 +39,8 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
             // assert
             using (new AssertionScope())
             {
-                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
                 response.StatusCode.Should().Be(HttpStatusCode.OK);
+                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
             }
         }
 
@@ -59,8 +59,8 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
             // assert
             using (new AssertionScope())
             {
-                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
-                actual.Should().BeEquivalentTo(expected, options => options.Including(x => x.Name));
+               actual.Should().BeEquivalentTo(expected, options => options.Including(x => x.Name));
+               isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
             }
         }
     }

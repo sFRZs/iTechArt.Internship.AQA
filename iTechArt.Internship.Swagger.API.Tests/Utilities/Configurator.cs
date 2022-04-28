@@ -8,18 +8,26 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
     public static class Configurator
     {
         private static readonly Lazy<IConfiguration> _configuration;
-        public static IConfiguration Configuration => _configuration.Value;
+        private static IConfiguration Configuration => _configuration.Value;
+        private static IConfigurationSection TaskProcessor => Configuration.GetSection(nameof(TaskProcessor));
+        private static IConfigurationSection WebAuth => Configuration.GetSection(nameof(WebAuth));
 
         public static string BaseUrl => Configuration[nameof(BaseUrl)];
         public static string Token => Configuration[nameof(Token)];
-        public static string DataTypesEndpoint => Configuration[nameof(DataTypesEndpoint)];
-        public static string AllActiveTasksEndpoint => Configuration[nameof(AllActiveTasksEndpoint)];
-        public static string AllActiveTasksGroupEndpoint => Configuration[nameof(AllActiveTasksGroupEndpoint)];
-        public static string AllActiveIndividualEndpoint => Configuration[nameof(AllActiveIndividualEndpoint)];
-        public static string TaskByIdEndpoint => Configuration[nameof(TaskByIdEndpoint)];
-        
 
-        static  Configurator()
+        public static string DataTypesEndpoint => TaskProcessor.GetValue<string>("DataTypesEndpoint");
+        public static string AllActiveTasksEndpoint => TaskProcessor.GetValue<string>("AllActiveTasksEndpoint");
+        public static string AllActiveTasksGroupEndpoint => TaskProcessor.GetValue<string>("AllActiveTasksGroupEndpoint");
+        public static string AllActiveIndividualEndpoint => TaskProcessor.GetValue<string>("AllActiveIndividualEndpoint");
+        public static string TaskByIdEndpoint => TaskProcessor.GetValue<string>("TaskByIdEndpoint");
+
+        public static string BrowserType => WebAuth.GetValue<string>("BrowserType");
+        public static string LoginUrl => WebAuth.GetValue<string>("LoginUrl");
+        public static string Login => WebAuth.GetValue<string>("Login");
+        public static string Password => WebAuth.GetValue<string>("Password");
+
+
+        static Configurator()
         {
             _configuration = new Lazy<IConfiguration>(BuildConfiguration);
         }
