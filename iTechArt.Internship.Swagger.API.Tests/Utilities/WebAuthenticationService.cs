@@ -15,41 +15,37 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
         {
             _driver = DriverFactory.GetDriver();
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            _wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
         }
 
         public string GetToken()
         {
             string token = null;
             var regex = new Regex(@".+access_token=");
+            var regex2 = new Regex(@"&token_type.+");
 
             _driver.Navigate().GoToUrl(Configurator.LoginUrl);
 
             try
             {
-                var userNameInput = _wait.Until(d => d.FindElement(By.Id("i0116")));
+                var userNameInput = _wait.Until(d => d.FindElement(By.CssSelector("[type='email']")));
                 userNameInput.SendKeys(Configurator.Login);
 
-                var nextButton = _wait.Until(d => d.FindElement(By.Id("idSIButton9")));
+                var nextButton = _wait.Until(d => d.FindElement(By.CssSelector("[type='submit'][value='Далее']")));
                 nextButton.Click();
 
-                var passInput = _wait.Until(d => d.FindElement(By.Id("i0118")));
+                var passInput = _wait.Until(d => d.FindElement(By.CssSelector("[type='password']")));
                 passInput.SendKeys(Configurator.Password);
 
-                var submitButton = _wait.Until(d => d.FindElement(By.Id("idSIButton9")));
+                var submitButton = _wait.Until(d => d.FindElement(By.CssSelector("[type='submit'][value='Войти']")));
                 submitButton.Click();
 
                 var backButton = _wait.Until(d => d.FindElement(By.Id("idBtn_Back")));
                 backButton.Click();
 
                 _wait.Until(d => d.Url.Contains("access_token"));
-                token = regex.Replace(_driver.Url, "");
+                token = $"Bearer {regex2.Replace(regex.Replace(_driver.Url, ""), "")}";
             }
-
-            catch (Exception e)
-            {
-                // ignored
-            }
-
             finally
             {
                 _driver.Quit();

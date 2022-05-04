@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -19,16 +20,20 @@ namespace iTechArt.Internship.Swagger.API.Tests.Entities.Factories
                 "brave" => GetBraveDriver(),
                 _ => throw new InvalidDataException("This browser not supported!")
             };
-            
+
+            webDriver.Manage().Cookies.DeleteAllCookies();
+            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
             return webDriver;
         }
+
         private static IWebDriver GetChromeDriver()
         {
             var chromeOptions = new ChromeOptions();
             chromeOptions.AddArguments("--disable-gpu");
             chromeOptions.AddArguments("--disable-extensions");
             chromeOptions.AddArguments("--headless");
-            
+
             new DriverManager().SetUpDriver(new ChromeConfig());
 
             return new ChromeDriver(chromeOptions);
