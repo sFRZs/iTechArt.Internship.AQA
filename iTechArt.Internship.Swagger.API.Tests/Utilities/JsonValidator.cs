@@ -15,11 +15,8 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
             try
             {
                 var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                var path =
-                    $"{basePath}{Path.DirectorySeparatorChar}TestData{Path.DirectorySeparatorChar}Schemas{Path.DirectorySeparatorChar}";
-                path += fileName.Contains("Error")
-                    ? $"ErrorSchemas{Path.DirectorySeparatorChar}{fileName}"
-                    : $"{fileName}";
+                var path = $"{basePath}{Path.DirectorySeparatorChar}TestData{Path.DirectorySeparatorChar}Schemas{Path.DirectorySeparatorChar}";
+                path += fileName.Contains("Error") ? $"ErrorSchemas{Path.DirectorySeparatorChar}{fileName}" : $"{fileName}";
 
                 var jObject = JToken.Parse(responseContent);
 

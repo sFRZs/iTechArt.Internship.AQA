@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using iTechArt.Internship.Swagger.API.Tests.Entities.Enums;
 using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels;
+using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels.TaskProcessor;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Entities.Factories
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace iTechArt.Internship.Swagger.API.Tests.Models.ViewModels
+namespace iTechArt.Internship.Swagger.API.Tests.Models.ViewModels.TaskProcessor
 {
     public class ActiveTaskVM
     {

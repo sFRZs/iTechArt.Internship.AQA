@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "Items": [
+    {
+      "$ref": "TaskSchema.json"
+    }
+  ],
+  "additionalItems": false
+}

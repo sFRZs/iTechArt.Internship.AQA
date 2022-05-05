@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using iTechArt.Internship.Swagger.API.Tests.Services.Interfaces;
+using iTechArt.Internship.Swagger.API.Tests.Services.Interfaces.TaskProcessor;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
 using RestSharp;
 
-namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes
+namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor
 {
     public class DataTypesService : BaseService, IDataTypeService
     {

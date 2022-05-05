@@ -29,7 +29,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
             _log.LogInformation($"Status text  : {response.StatusDescription}");
             _log.LogInformation($"Headers      : {response.Headers}");
             _log.LogInformation($"Response body: {response.Content}");
-            
+
             if (response.ErrorMessage != null)
             {
                 _log.LogError($"Errors: {response.ErrorMessage}");

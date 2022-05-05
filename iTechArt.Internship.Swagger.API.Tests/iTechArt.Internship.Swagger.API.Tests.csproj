@@ -17,9 +17,10 @@
       <PackageReference Include="RestSharp" Version="106.12.0" />
       <PackageReference Include="Selenium.Support" Version="4.1.0" />
       <PackageReference Include="Selenium.WebDriver" Version="4.1.0" />
-      <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="100.0.4896.2000" />
+      <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="101.0.4951.4100" />
       <PackageReference Include="WebDriverManager" Version="2.12.4" />
       <PackageReference Include="xunit" Version="2.4.1" />
+      <PackageReference Include="xunit.categories" Version="2.0.6" />
     </ItemGroup>
 
     <ItemGroup>
@@ -66,16 +67,25 @@
       <Content Include="TestData\Schemas\ErrorSchemas\CustomErrorSchema.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="TestData\Schemas\SystemSchema.json" />
+      <None Remove="TestData\Schemas\IListWebApiSystemsSchema.json" />
+      <Content Include="TestData\Schemas\IListWebApiSystemsSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="TestData\Schemas\IListWebApiAllTasksForSystemSchema.json" />
+      <Content Include="TestData\Schemas\IListWebApiAllTasksForSystemSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="TestData\Schemas\WebApiSystemSchema.json" />
+      <Content Include="TestData\Schemas\WebApiSystemSchema.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>
       <Compile Remove="Utilities\Responses\ActiveIndividualResponse.cs" />
       <Compile Remove="Utilities\Responses\ActiveTaskResponse.cs" />
       <Compile Remove="Utilities\Responses\ActiveTasksGroupResponse.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Resources" />
     </ItemGroup>
 
 </Project>
