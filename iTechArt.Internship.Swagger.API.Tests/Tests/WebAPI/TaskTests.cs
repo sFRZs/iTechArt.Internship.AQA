@@ -50,7 +50,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests.WebAPI
             _logHelper.TraceResponse(response);
 
             var isValidSchema = JsonValidator.IsValid(response.Content, "TaskSchema.json", out var errors);
-            var allTasks = _webApiTaskService.GetAllTasksForSystem<IList<TaskVM>>($"{system.Data.Id}").Result.Data;
+            var allTasks = (await _webApiTaskService.GetAllTasksForSystem<IList<TaskVM>>($"{system.Data.Id}")).Data;
 
             // assert
             using (new AssertionScope())
