@@ -9,23 +9,19 @@ using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels.TaskProcessor;
 using iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Tests.TaskProcessor
 {
     public class DataTypesTests
     {
         private readonly DataTypesService _dataTypesService;
-        private readonly LogHelper<TaskTests> _logHelper;
 
-        public DataTypesTests(ITestOutputHelper testOutputHelper)
+        public DataTypesTests()
         {
             _dataTypesService = new DataTypesService
             {
                 AuthToken = AuthTokenFactory.GetToken(AuthTokenPlace.ConfigurationFile),
-                TestOutputHelper = testOutputHelper
             };
-            _logHelper = new LogHelper<TaskTests>(testOutputHelper);
         }
 
         [Fact]
@@ -34,7 +30,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests.TaskProcessor
             // act
             var response = await _dataTypesService.GetAllDataTypes<IList<DataTypeVM>>();
             var isValidSchema = JsonValidator.IsValid(response.Content, "IListDataTypeSchema.json", out var errors);
-            _logHelper.TraceResponse(response);
 
             // assert
             using (new AssertionScope())
@@ -54,13 +49,12 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests.TaskProcessor
             // act
             var actual = response.Data;
             var isValidSchema = JsonValidator.IsValid(response.Content, "IListDataTypeSchema.json", out var errors);
-            _logHelper.TraceResponse(response);
 
             // assert
             using (new AssertionScope())
             {
-               actual.Should().BeEquivalentTo(expected, options => options.Including(x => x.Name));
-               isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
+                actual.Should().BeEquivalentTo(expected, options => options.Including(x => x.Name));
+                isValidSchema.Should().BeTrue($":\n{string.Join(",\n", errors)}\n");
             }
         }
     }

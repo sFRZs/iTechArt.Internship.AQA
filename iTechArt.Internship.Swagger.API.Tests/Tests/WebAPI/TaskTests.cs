@@ -10,7 +10,6 @@ using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels.WebAPI;
 using iTechArt.Internship.Swagger.API.Tests.Services.Classes.WebAPI;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Tests.WebAPI
 {
@@ -18,23 +17,18 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests.WebAPI
     {
         private readonly WebApiTaskService _webApiTaskService;
         private readonly WebApiSystemService _webApiSystemService;
-        private readonly LogHelper<SystemTests> _logHelper;
 
-        public TaskTests(ITestOutputHelper testOutputHelper)
+        public TaskTests()
         {
             _webApiTaskService = new WebApiTaskService
             {
                 AuthToken = AuthTokenFactory.GetToken(AuthTokenPlace.Server),
-                TestOutputHelper = testOutputHelper
             };
 
             _webApiSystemService = new WebApiSystemService
             {
                 AuthToken = AuthTokenFactory.GetToken(AuthTokenPlace.Server),
-                TestOutputHelper = testOutputHelper
             };
-
-            _logHelper = new LogHelper<SystemTests>(testOutputHelper);
         }
 
         [Fact]
@@ -47,7 +41,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests.WebAPI
 
             // act
             var response = await _webApiTaskService.PostTask<TaskVM>(taskModel);
-            _logHelper.TraceResponse(response);
 
             var isValidSchema = JsonValidator.IsValid(response.Content, "TaskSchema.json", out var errors);
             var allTasks = (await _webApiTaskService.GetAllTasksForSystem<IList<TaskVM>>($"{system.Data.Id}")).Data;

@@ -6,13 +6,13 @@ using RestSharp;
 namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.WebAPI
 {
     public class WebApiTaskService : BaseService, IWebApiTaskService
-    
+
     {
         public async Task<IRestResponse<T>> GetAllTasksForSystem<T>(string systemId)
         {
             var client = RestApiProvider.GetRestClient();
-            var request = RestApiProvider.CreateRequest($"{Configurator.AllTasksForSystemEndpoint}{systemId}", AuthToken);
-            _logHelper.TraceRequest(request);
+            var request =
+                RestApiProvider.CreateRequest($"{Configurator.AllTasksForSystemEndpoint}{systemId}", AuthToken);
 
             return await client.ExecuteAsync<T>(request);
         }
@@ -21,7 +21,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.WebAPI
         {
             var client = RestApiProvider.GetRestClient();
             var request = RestApiProvider.CreateRequest(Configurator.PostTaskEndpoint, AuthToken, Method.POST, body);
-            _logHelper.TraceRequest(request);
 
             return await client.ExecuteAsync<T>(request);
         }
