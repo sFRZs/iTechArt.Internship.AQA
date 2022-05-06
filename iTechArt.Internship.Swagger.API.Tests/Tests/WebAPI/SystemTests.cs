@@ -39,7 +39,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests.WebAPI
             _logHelper.TraceResponse(response);
 
             var isValidSchema = JsonValidator.IsValid(response.Content, "WebApiSystemSchema.json", out var errors);
-            var allSystems = _webApiSystemService.GetAllSystems<IList<SystemVM>>().Result.Data;
+            var allSystems = (await _webApiSystemService.GetAllSystems<IList<SystemVM>>()).Data;
 
             // assert
             using (new AssertionScope())
