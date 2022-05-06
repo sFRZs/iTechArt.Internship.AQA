@@ -16,7 +16,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Entities.Factories
                     _token = Configurator.Token;
                     break;
                 case (AuthTokenPlace.Server):
-                    _token = null;
+                    _token = new WebAuthenticationService().GetToken();
                     break;
                 case (AuthTokenPlace.Null):
                     _token = null;

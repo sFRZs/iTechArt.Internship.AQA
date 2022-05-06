@@ -9,16 +9,22 @@ using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels;
 using iTechArt.Internship.Swagger.API.Tests.Services.Classes;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Tests
 {
     public class NegativeTests
     {
         private readonly TasksService _tasksService;
+        private readonly LogHelper<TaskTests> _logHelper;
 
-        public NegativeTests()
+        public NegativeTests(ITestOutputHelper testOutputHelper)
         {
-            _tasksService = new TasksService();
+            _tasksService = new TasksService
+            {
+                TestOutputHelper = testOutputHelper
+            };
+            _logHelper = new LogHelper<TaskTests>(testOutputHelper);
         }
 
         [Fact]
@@ -30,7 +36,8 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
             // act
             var response = await _tasksService.GetAllActiveIndividual<ErrorModelVM>();
             var errorMessage = response.Data.Errors.AuthorizationHeader[0];
-      
+            _logHelper.TraceResponse(response);
+
             // assert
             using (new AssertionScope())
             {
@@ -48,6 +55,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests
             // act
             var response = await _tasksService.GetTaskById($"{Guid.Empty}");
             var isValidSchema = JsonValidator.IsValid(response.Content, "CustomErrorSchema.json", out var errors);
+            _logHelper.TraceResponse(response);
 
             // assert
             using (new AssertionScope())

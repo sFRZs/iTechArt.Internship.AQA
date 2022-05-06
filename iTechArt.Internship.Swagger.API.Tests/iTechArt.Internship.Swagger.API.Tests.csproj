@@ -8,9 +8,17 @@
       <PackageReference Include="FluentAssertions" Version="6.5.1" />
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
       <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+      <PackageReference Include="MicrosoftExtensions.Logging.Xunit" Version="1.0.0" />
       <PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.15-beta1" />
       <PackageReference Include="RestSharp" Version="106.12.0" />
+      <PackageReference Include="Selenium.Support" Version="4.1.0" />
+      <PackageReference Include="Selenium.WebDriver" Version="4.1.0" />
+      <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="100.0.4896.2000" />
+      <PackageReference Include="WebDriverManager" Version="2.12.4" />
       <PackageReference Include="xunit" Version="2.4.1" />
     </ItemGroup>
 
@@ -64,6 +72,10 @@
       <Compile Remove="Utilities\Responses\ActiveIndividualResponse.cs" />
       <Compile Remove="Utilities\Responses\ActiveTaskResponse.cs" />
       <Compile Remove="Utilities\Responses\ActiveTasksGroupResponse.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Resources" />
     </ItemGroup>
 
 </Project>
