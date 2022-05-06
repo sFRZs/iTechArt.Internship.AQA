@@ -5,13 +5,13 @@ using FluentAssertions;
 using FluentAssertions.Execution;
 using iTechArt.Internship.Swagger.API.Tests.Entities.Enums;
 using iTechArt.Internship.Swagger.API.Tests.Entities.Factories;
-using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels;
-using iTechArt.Internship.Swagger.API.Tests.Services.Classes;
+using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels.TaskProcessor;
+using iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace iTechArt.Internship.Swagger.API.Tests.Tests
+namespace iTechArt.Internship.Swagger.API.Tests.Tests.TaskProcessor
 {
     public class NegativeTests
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace iTechArt.Internship.Swagger.API.Tests.Models.ViewModels
+namespace iTechArt.Internship.Swagger.API.Tests.Models.ViewModels.TaskProcessor
 {
     public class ActiveTasksGroupVM
     {

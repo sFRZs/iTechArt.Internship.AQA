@@ -1,0 +1,30 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "System": {
+    "properties": {
+      "id": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "name": {
+        "type": "string"
+      },
+      "url": {
+        "type": "string"
+      },
+      "connectorId": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "url",
+      "connectorId"
+    ],
+    "additionalProperties": false,
+    "title": "System"
+  }
+}

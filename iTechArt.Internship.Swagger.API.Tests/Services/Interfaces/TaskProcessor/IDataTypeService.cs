@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using RestSharp;
 
-namespace iTechArt.Internship.Swagger.API.Tests.Services.Interfaces
+namespace iTechArt.Internship.Swagger.API.Tests.Services.Interfaces.TaskProcessor
 {
     public interface IDataTypeService
     {

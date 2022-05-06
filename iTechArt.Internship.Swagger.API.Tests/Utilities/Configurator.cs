@@ -10,6 +10,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
         private static readonly Lazy<IConfiguration> _configuration;
         private static IConfiguration Configuration => _configuration.Value;
         private static IConfigurationSection TaskProcessor => Configuration.GetSection(nameof(TaskProcessor));
+        private static IConfigurationSection WebApi => Configuration.GetSection(nameof(WebApi));
         private static IConfigurationSection WebAuth => Configuration.GetSection(nameof(WebAuth));
 
         public static string BaseUrl => Configuration[nameof(BaseUrl)];
@@ -21,6 +22,11 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
         public static string AllActiveIndividualEndpoint => TaskProcessor.GetValue<string>("AllActiveIndividualEndpoint");
         public static string TaskByIdEndpoint => TaskProcessor.GetValue<string>("TaskByIdEndpoint");
 
+        public static string AllSystemsEndpoint => WebApi.GetValue<string>("AllSystemsEndpoint");
+        public static string PostSystemEndpoint => WebApi.GetValue<string>("PostSystemEndpoint");
+        public static string AllTasksForSystemEndpoint => WebApi.GetValue<string>("AllTasksForSystemEndpoint");
+        public static string PostTaskEndpoint => WebApi.GetValue<string>("PostTaskEndpoint");
+        
         public static string BrowserType => WebAuth.GetValue<string>("BrowserType");
         public static string LoginUrl => WebAuth.GetValue<string>("LoginUrl");
         public static string Login => WebAuth.GetValue<string>("Login");
