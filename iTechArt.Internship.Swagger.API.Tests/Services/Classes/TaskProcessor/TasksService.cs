@@ -11,7 +11,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor
         {
             var client = RestApiProvider.GetRestClient();
             var request = RestApiProvider.CreateRequest(Configurator.AllActiveTasksEndpoint, AuthToken);
-            _logHelper.TraceRequest(request);
 
             return await client.ExecuteAsync(request);
         }
@@ -20,7 +19,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor
         {
             var client = RestApiProvider.GetRestClient();
             var request = RestApiProvider.CreateRequest(Configurator.AllActiveTasksEndpoint, AuthToken);
-            _logHelper.TraceRequest(request);
 
             return await client.ExecuteAsync<T>(request);
         }
@@ -29,7 +27,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor
         {
             var client = RestApiProvider.GetRestClient();
             var request = RestApiProvider.CreateRequest(Configurator.AllActiveTasksGroupEndpoint, AuthToken);
-            _logHelper.TraceRequest(request);
 
             return await client.ExecuteAsync(request);
         }
@@ -38,7 +35,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor
         {
             var client = RestApiProvider.GetRestClient();
             var request = RestApiProvider.CreateRequest(Configurator.AllActiveTasksGroupEndpoint, AuthToken);
-            _logHelper.TraceRequest(request);
 
             return await client.ExecuteAsync<T>(request);
         }
@@ -47,7 +43,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor
         {
             var client = RestApiProvider.GetRestClient();
             var request = RestApiProvider.CreateRequest(Configurator.AllActiveIndividualEndpoint, AuthToken);
-            _logHelper.TraceRequest(request);
 
             return await client.ExecuteAsync(request);
         }
@@ -56,7 +51,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor
         {
             var client = RestApiProvider.GetRestClient();
             var request = RestApiProvider.CreateRequest(Configurator.AllActiveIndividualEndpoint, AuthToken);
-            _logHelper.TraceRequest(request);
 
             return await client.ExecuteAsync<T>(request);
         }
@@ -65,7 +59,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor
         {
             var client = RestApiProvider.GetRestClient();
             var request = RestApiProvider.CreateRequest($"{Configurator.TaskByIdEndpoint}{taskId}", AuthToken);
-            _logHelper.TraceRequest(request);
 
             return await client.ExecuteAsync(request);
         }
@@ -74,7 +67,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor
         {
             var client = RestApiProvider.GetRestClient();
             var request = RestApiProvider.CreateRequest($"{Configurator.TaskByIdEndpoint}{taskId}", AuthToken);
-            _logHelper.TraceRequest(request);
 
             return await client.ExecuteAsync<T>(request);
         }

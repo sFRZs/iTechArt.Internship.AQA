@@ -9,23 +9,19 @@ using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels.WebAPI;
 using iTechArt.Internship.Swagger.API.Tests.Services.Classes.WebAPI;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Tests.WebAPI
 {
     public class SystemTests
     {
         private readonly WebApiSystemService _webApiSystemService;
-        private readonly LogHelper<SystemTests> _logHelper;
 
-        public SystemTests(ITestOutputHelper testOutputHelper)
+        public SystemTests()
         {
             _webApiSystemService = new WebApiSystemService
             {
                 AuthToken = AuthTokenFactory.GetToken(AuthTokenPlace.Server),
-                TestOutputHelper = testOutputHelper
             };
-            _logHelper = new LogHelper<SystemTests>(testOutputHelper);
         }
 
         [Fact]
@@ -36,7 +32,6 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests.WebAPI
 
             // act
             var response = await _webApiSystemService.PostSystem<SystemVM>(systemModel);
-            _logHelper.TraceResponse(response);
 
             var isValidSchema = JsonValidator.IsValid(response.Content, "WebApiSystemSchema.json", out var errors);
             var allSystems = (await _webApiSystemService.GetAllSystems<IList<SystemVM>>()).Data;
