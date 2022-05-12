@@ -30,7 +30,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
 
                     return jObject.IsValid(schema, out errorMessages);
                 }
-            } 
+            }
             catch (Exception e)
             {
                 errorMessages = new List<string>();
