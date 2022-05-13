@@ -1,18 +1,19 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Xunit;
+﻿using iTechArt.Internship.Swagger.API.Tests.Utilities.Logger;
+using NLog;
+using NLog.Config;
 using Xunit.Abstractions;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Entities.Factories
 {
     public class LogFactory
     {
-        public static ILogger<T> CreateLogger<T>(ITestOutputHelper testOutputHelper)
+        public static NLog.Logger CreateLogger(ITestOutputHelper testOutputHelper)
         {
-            ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder
-                .AddProvider(new XunitLoggerProvider(testOutputHelper))
-            );
-
-            return loggerFactory.CreateLogger<T>();
+            var target = new XunitLoggerTarget(testOutputHelper);
+            var config = new LoggingConfiguration();
+            config.AddRuleForAllLevels(target);
+            LogManager.Configuration = config;
+            return LogManager.GetCurrentClassLogger();
         }
     }
 }
