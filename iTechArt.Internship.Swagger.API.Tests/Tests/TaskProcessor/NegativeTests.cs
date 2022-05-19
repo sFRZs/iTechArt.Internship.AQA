@@ -15,11 +15,10 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests.TaskProcessor
     public class NegativeTests
     {
         private readonly TasksService _tasksService;
-       
+
         public NegativeTests()
         {
             _tasksService = new TasksService();
-
         }
 
         [Fact]
@@ -31,7 +30,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests.TaskProcessor
             // act
             var response = await _tasksService.GetAllActiveIndividual<ErrorModelVM>();
             var errorMessage = response.Data.Errors.AuthorizationHeader[0];
-           
+
             // assert
             using (new AssertionScope())
             {
@@ -49,7 +48,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests.TaskProcessor
             // act
             var response = await _tasksService.GetTaskById($"{Guid.Empty}");
             var isValidSchema = JsonValidator.IsValid(response.Content, "CustomErrorSchema.json", out var errors);
-          
+
             // assert
             using (new AssertionScope())
             {
