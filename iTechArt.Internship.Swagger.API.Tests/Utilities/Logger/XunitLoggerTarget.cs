@@ -4,7 +4,7 @@ using Xunit.Abstractions;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Utilities.Logger
 {
-    public class XunitLoggerTarget : TargetWithLayoutHeaderAndFooter
+    public class XunitLoggerTarget : TargetWithLayout
     {
         private readonly ITestOutputHelper _helper;
 

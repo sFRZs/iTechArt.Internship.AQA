@@ -8,20 +8,24 @@ using iTechArt.Internship.Swagger.API.Tests.Entities.Factories;
 using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels.TaskProcessor;
 using iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
+using iTechArt.Internship.Swagger.API.Tests.Utilities.Logger;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Tests.TaskProcessor
 {
     public class DataTypesTests
     {
         private readonly DataTypesService _dataTypesService;
+        private readonly LogHelper _log;
 
-        public DataTypesTests()
+        public DataTypesTests(ITestOutputHelper testOutputHelper)
         {
             _dataTypesService = new DataTypesService
             {
                 AuthToken = AuthTokenFactory.GetToken(AuthTokenPlace.ConfigurationFile),
             };
+            _log = new LogHelper(testOutputHelper);
         }
 
         [Fact]
@@ -30,7 +34,8 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests.TaskProcessor
             // act
             var response = await _dataTypesService.GetAllDataTypes<IList<DataTypeVM>>();
             var isValidSchema = JsonValidator.IsValid(response.Content, "IListDataTypeSchema.json", out var errors);
-
+            _log.TraceResponse(response);
+            
             // assert
             using (new AssertionScope())
             {

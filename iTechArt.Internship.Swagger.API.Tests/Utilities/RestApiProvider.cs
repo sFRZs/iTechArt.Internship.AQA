@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using iTechArt.Internship.Swagger.API.Tests.Entities.Wrappers;
+using RestSharp;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Utilities
 {
@@ -13,7 +14,8 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
 
         public IRestClient GetRestClient()
         {
-            return new RestClient(Configurator.BaseUrl);
+           //return new RestClient(Configurator.BaseUrl);
+            return new WrappedRestClient(Configurator.BaseUrl);
         }
 
         public IRestRequest CreateRequest(string endPoint, string token, Method method = Method.GET, object body = null)

@@ -12,7 +12,9 @@ namespace iTechArt.Internship.Swagger.API.Tests.Entities.Factories
             var target = new XunitLoggerTarget(testOutputHelper);
             var config = new LoggingConfiguration();
             config.AddRuleForAllLevels(target);
+            
             LogManager.Configuration = config;
+            
             return LogManager.GetCurrentClassLogger();
         }
     }
