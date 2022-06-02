@@ -1,16 +1,26 @@
-﻿using iTechArt.Internship.Swagger.API.Tests.Utilities;
+﻿using iTechArt.Internship.Swagger.API.Tests.Services.Interfaces;
+using iTechArt.Internship.Swagger.API.Tests.Utilities;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes
 {
-    public class BaseService
+    public class BaseService : IBaseService
     {
-        protected readonly RestApiProvider RestApiProvider;
-
+        protected readonly IRestApiProvider RestApiProvider;
         public string AuthToken { get; set; }
 
-        protected BaseService()
+        // public BaseService(IXunitLogger xunitLogger)
+        // {
+        //     RestApiProvider = RestApiProvider.GetInstance();
+        //     _xunitLogger = xunitLogger;
+        // }  
+        public BaseService(IRestApiProvider restApiProvider)
         {
-            RestApiProvider = RestApiProvider.GetInstance();
+            RestApiProvider = restApiProvider;
         }
+
+        // protected BaseService()
+        //  {
+        //      RestApiProvider = RestApiProvider.GetInstance();
+        //  }
     }
 }

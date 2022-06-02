@@ -9,7 +9,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.WebAPI
     {
         public async Task<IRestResponse<T>> GetAllSystems<T>()
         {
-            var client = RestApiProvider.GetRestClient();
+            var client = RestApiProvider.RestClient;
             var request = RestApiProvider.CreateRequest(Configurator.AllSystemsEndpoint, AuthToken);
 
             return await client.ExecuteAsync<T>(request);
@@ -17,7 +17,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.WebAPI
 
         public async Task<IRestResponse> GetAllSystems()
         {
-            var client = RestApiProvider.GetRestClient();
+            var client = RestApiProvider.RestClient;
             var request = RestApiProvider.CreateRequest(Configurator.AllSystemsEndpoint, AuthToken);
 
             return await client.ExecuteAsync(request);
@@ -25,7 +25,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.WebAPI
 
         public async Task<IRestResponse<T>> PostSystem<T>(object body)
         {
-            var client = RestApiProvider.GetRestClient();
+            var client = RestApiProvider.RestClient;
             var request = RestApiProvider.CreateRequest(Configurator.PostSystemEndpoint, AuthToken, Method.POST, body);
 
             return await client.ExecuteAsync<T>(request);
@@ -33,10 +33,14 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.WebAPI
 
         public async Task<IRestResponse> PostSystem(object body)
         {
-            var client = RestApiProvider.GetRestClient();
+            var client = RestApiProvider.RestClient;
             var request = RestApiProvider.CreateRequest(Configurator.PostSystemEndpoint, AuthToken, Method.POST, body);
 
             return await client.ExecuteAsync(request);
+        }
+
+        public WebApiSystemService(RestApiProvider restApiProvider) : base(restApiProvider)
+        {
         }
     }
 }

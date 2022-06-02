@@ -7,25 +7,20 @@ using iTechArt.Internship.Swagger.API.Tests.Entities.Enums;
 using iTechArt.Internship.Swagger.API.Tests.Entities.Factories;
 using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels.TaskProcessor;
 using iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor;
+using iTechArt.Internship.Swagger.API.Tests.Services.Interfaces.TaskProcessor;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
-using iTechArt.Internship.Swagger.API.Tests.Utilities.Logger;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Tests.TaskProcessor
 {
-    public class DataTypesTests
+    public class DataTypesTests : IClassFixture<DataTypesService>
     {
-        private readonly DataTypesService _dataTypesService;
-        private readonly LogHelper _log;
+        private readonly IDataTypesService _dataTypesService;
 
-        public DataTypesTests(ITestOutputHelper testOutputHelper)
+        public DataTypesTests(IDataTypesService dataTypesService)
         {
-            _dataTypesService = new DataTypesService
-            {
-                AuthToken = AuthTokenFactory.GetToken(AuthTokenPlace.ConfigurationFile),
-            };
-            _log = new LogHelper(testOutputHelper);
+            _dataTypesService = dataTypesService;
+            _dataTypesService.AuthToken = AuthTokenFactory.GetToken(AuthTokenPlace.ConfigurationFile);
         }
 
         [Fact]
@@ -34,8 +29,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests.TaskProcessor
             // act
             var response = await _dataTypesService.GetAllDataTypes<IList<DataTypeVM>>();
             var isValidSchema = JsonValidator.IsValid(response.Content, "IListDataTypeSchema.json", out var errors);
-            _log.TraceResponse(response);
-            
+
             // assert
             using (new AssertionScope())
             {

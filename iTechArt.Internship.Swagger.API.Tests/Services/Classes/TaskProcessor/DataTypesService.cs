@@ -5,11 +5,15 @@ using RestSharp;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor
 {
-    public class DataTypesService : BaseService, IDataTypeService
+    public class DataTypesService : BaseService, IDataTypesService
     {
+        public DataTypesService(IRestApiProvider restApiProvider) : base(restApiProvider)
+        {
+        }
+
         public async Task<IRestResponse> GetAllDataTypes()
         {
-            var client = RestApiProvider.GetRestClient();
+            var client = RestApiProvider.RestClient;
             var request = RestApiProvider.CreateRequest(Configurator.DataTypesEndpoint, AuthToken);
 
             return await client.ExecuteAsync(request);
@@ -17,7 +21,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor
 
         public async Task<IRestResponse<T>> GetAllDataTypes<T>()
         {
-            var client = RestApiProvider.GetRestClient();
+            var client = RestApiProvider.RestClient;
             var request = RestApiProvider.CreateRequest(Configurator.DataTypesEndpoint, AuthToken);
 
             return await client.ExecuteAsync<T>(request);

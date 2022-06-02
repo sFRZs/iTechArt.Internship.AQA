@@ -3,20 +3,23 @@ using RestSharp;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Utilities
 {
-    public class RestApiProvider
+    public class RestApiProvider : IRestApiProvider
     {
-        private static RestApiProvider _provider;
         private readonly NewtonsoftSerializer _serializer = NewtonsoftSerializer.GetInstance();
 
-        private RestApiProvider()
+        public RestApiProvider(IWrappedRestClient wrappedRestClient)
         {
+            RestClient = wrappedRestClient;
         }
 
-        public IRestClient GetRestClient()
-        {
-           //return new RestClient(Configurator.BaseUrl);
-            return new WrappedRestClient(Configurator.BaseUrl);
-        }
+        // public IRestClient GetRestClient()
+        // {
+        //    //return new RestClient(Configurator.BaseUrl);
+        //     //return new WrappedRestClient(xunitLogger,Configurator.BaseUrl);
+        //     return _restClient;
+        // }
+
+        public IWrappedRestClient RestClient { get; set; }
 
         public IRestRequest CreateRequest(string endPoint, string token, Method method = Method.GET, object body = null)
         {
@@ -36,14 +39,14 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
             return request;
         }
 
-        public static RestApiProvider GetInstance()
-        {
-            if (_provider == null)
-            {
-                _provider = new RestApiProvider();
-            }
-
-            return _provider;
-        }
+        // public static RestApiProvider GetInstance()
+        // {
+        //     if (_provider == null)
+        //     {
+        //         _provider = new RestApiProvider();
+        //     }
+        //
+        //     return _provider;
+        // }
     }
 }

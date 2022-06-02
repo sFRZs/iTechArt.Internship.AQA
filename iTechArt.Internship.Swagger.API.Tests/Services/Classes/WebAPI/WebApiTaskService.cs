@@ -1,16 +1,16 @@
 ﻿using System.Threading.Tasks;
 using iTechArt.Internship.Swagger.API.Tests.Services.Interfaces.WebAPI;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
+
 using RestSharp;
 
 namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.WebAPI
 {
     public class WebApiTaskService : BaseService, IWebApiTaskService
-
     {
         public async Task<IRestResponse<T>> GetAllTasksForSystem<T>(string systemId)
         {
-            var client = RestApiProvider.GetRestClient();
+            var client = RestApiProvider.RestClient;
             var request =
                 RestApiProvider.CreateRequest($"{Configurator.AllTasksForSystemEndpoint}{systemId}", AuthToken);
 
@@ -19,7 +19,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.WebAPI
 
         public async Task<IRestResponse> GetAllTasksForSystem(string systemId)
         {
-            var client = RestApiProvider.GetRestClient();
+            var client = RestApiProvider.RestClient;
             var request =
                 RestApiProvider.CreateRequest($"{Configurator.AllTasksForSystemEndpoint}{systemId}", AuthToken);
 
@@ -28,7 +28,7 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.WebAPI
 
         public async Task<IRestResponse<T>> PostTask<T>(object body)
         {
-            var client = RestApiProvider.GetRestClient();
+            var client = RestApiProvider.RestClient;
             var request = RestApiProvider.CreateRequest(Configurator.PostTaskEndpoint, AuthToken, Method.POST, body);
 
             return await client.ExecuteAsync<T>(request);
@@ -36,10 +36,14 @@ namespace iTechArt.Internship.Swagger.API.Tests.Services.Classes.WebAPI
 
         public async Task<IRestResponse> PostTask(object body)
         {
-            var client = RestApiProvider.GetRestClient();
+            var client = RestApiProvider.RestClient;
             var request = RestApiProvider.CreateRequest(Configurator.PostTaskEndpoint, AuthToken, Method.POST, body);
 
             return await client.ExecuteAsync(request);
+        }
+
+        public WebApiTaskService(RestApiProvider restApiProvider) : base(restApiProvider)
+        {
         }
     }
 }
