@@ -15,22 +15,27 @@ namespace iTechArt.Internship.Swagger.API.Tests.Utilities
 
         public static string BaseUrl => Configuration[nameof(BaseUrl)];
         public static string Token => Configuration[nameof(Token)];
+        public static string Login => Configuration[nameof(Login)];
+        public static string Password => Configuration[nameof(Password)];
 
         public static string DataTypesEndpoint => TaskProcessor.GetValue<string>("DataTypesEndpoint");
         public static string AllActiveTasksEndpoint => TaskProcessor.GetValue<string>("AllActiveTasksEndpoint");
-        public static string AllActiveTasksGroupEndpoint => TaskProcessor.GetValue<string>("AllActiveTasksGroupEndpoint");
-        public static string AllActiveIndividualEndpoint => TaskProcessor.GetValue<string>("AllActiveIndividualEndpoint");
+
+        public static string AllActiveTasksGroupEndpoint =>
+            TaskProcessor.GetValue<string>("AllActiveTasksGroupEndpoint");
+
+        public static string AllActiveIndividualEndpoint =>
+            TaskProcessor.GetValue<string>("AllActiveIndividualEndpoint");
+
         public static string TaskByIdEndpoint => TaskProcessor.GetValue<string>("TaskByIdEndpoint");
 
         public static string AllSystemsEndpoint => WebApi.GetValue<string>("AllSystemsEndpoint");
         public static string PostSystemEndpoint => WebApi.GetValue<string>("PostSystemEndpoint");
         public static string AllTasksForSystemEndpoint => WebApi.GetValue<string>("AllTasksForSystemEndpoint");
         public static string PostTaskEndpoint => WebApi.GetValue<string>("PostTaskEndpoint");
-        
+
         public static string BrowserType => WebAuth.GetValue<string>("BrowserType");
         public static string LoginUrl => WebAuth.GetValue<string>("LoginUrl");
-        public static string Login => WebAuth.GetValue<string>("Login");
-        public static string Password => WebAuth.GetValue<string>("Password");
 
 
         static Configurator()

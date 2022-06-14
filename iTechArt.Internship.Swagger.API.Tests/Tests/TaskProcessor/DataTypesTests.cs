@@ -7,6 +7,7 @@ using iTechArt.Internship.Swagger.API.Tests.Entities.Enums;
 using iTechArt.Internship.Swagger.API.Tests.Entities.Factories;
 using iTechArt.Internship.Swagger.API.Tests.Models.ViewModels.TaskProcessor;
 using iTechArt.Internship.Swagger.API.Tests.Services.Classes.TaskProcessor;
+using iTechArt.Internship.Swagger.API.Tests.Services.Interfaces.TaskProcessor;
 using iTechArt.Internship.Swagger.API.Tests.Utilities;
 using Xunit;
 
@@ -14,14 +15,12 @@ namespace iTechArt.Internship.Swagger.API.Tests.Tests.TaskProcessor
 {
     public class DataTypesTests
     {
-        private readonly DataTypesService _dataTypesService;
+        private readonly IDataTypeService _dataTypesService;
 
         public DataTypesTests()
         {
             _dataTypesService = new DataTypesService
-            {
-                AuthToken = AuthTokenFactory.GetToken(AuthTokenPlace.ConfigurationFile),
-            };
+                {AuthToken = AuthTokenFactory.GetToken(AuthTokenPlace.ConfigurationFile)};
         }
 
         [Fact]

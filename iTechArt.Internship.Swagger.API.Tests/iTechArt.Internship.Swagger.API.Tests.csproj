@@ -80,6 +80,10 @@
       <Content Include="TestData\Schemas\WebApiSystemSchema.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="appsettings.ReadMe.json" />
+      <Content Include="appsettings.ReadMe.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>
