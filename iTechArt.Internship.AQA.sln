@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTechArt.Internship.Swagger.API.Tests", "iTechArt.Internship.Swagger.API.Tests\iTechArt.Internship.Swagger.API.Tests.csproj", "{03265463-7A0D-4A1D-93D9-3195CE3022F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTechArt.Internship.UI.Tests", "iTechArt.Internship.UI.Tests\iTechArt.Internship.UI.Tests.csproj", "{FF04E970-65AF-4E40-9B06-E0045122B70E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTechArt.Internship.Connect.ItVenture.UI.Tests", "iTechArt.Internship.Connect.ItVenture.UI.Tests\iTechArt.Internship.Connect.ItVenture.UI.Tests.csproj", "{FF04E970-65AF-4E40-9B06-E0045122B70E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
